@@ -1,0 +1,14 @@
+{
+  "name": "bean-miner-agent",
+  "version": "2.0.0",
+  "description": "Autonomous BEAN mining agent — GitHub Actions powered",
+  "scripts": {
+    "mine": "node auto_miner.js",
+    "claim:eth": "node claim_rewards.js --type=eth",
+    "claim:bean": "node claim_rewards.js --type=bean"
+  },
+  "dependencies": {
+    "ethers": "^6.0.0",
+    "dotenv": "^16.0.0"
+  }
+}

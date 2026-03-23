@@ -6,7 +6,18 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+# !!! CRITICAL - Never commit your private key !!!
+.env
 
+# Node dependencies
+node_modules/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
 # Additional Ruby/bundler ignore for when you run: bundle install
 /vendor
 

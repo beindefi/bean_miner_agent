@@ -1,0 +1,41 @@
+# ============================================
+# BEAN MINER AGENT - Claimer Workflow
+# Runs every 2 hours to harvest ETH rewards
+# back into your wallet automatically
+# ============================================
+
+name: 🌾 BEAN Harvester
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'    # Every 2 hours
+  workflow_dispatch:           # Also lets you trigger it manually from GitHub UI
+
+jobs:
+  claim:
+    name: Claim ETH Rewards
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Claim ETH rewards
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: node claim_rewards.js --type=eth
+
+      - name: Claim BEAN rewards
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: node claim_rewards.js --type=bean

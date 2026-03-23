@@ -1,0 +1,36 @@
+# ============================================
+# BEAN MINER AGENT - Miner Workflow
+# Runs every 5 minutes, checks for new rounds
+# and deploys bets automatically
+# ============================================
+
+name: 🫘 BEAN Miner
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # Every 5 minutes
+  workflow_dispatch:          # Also lets you trigger it manually from GitHub UI
+
+jobs:
+  mine:
+    name: Run Mining Bot
+    runs-on: ubuntu-latest
+    timeout-minutes: 4        # Stay under the 5 min cron window
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run miner
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: node auto_miner.js

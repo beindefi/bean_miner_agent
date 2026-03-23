@@ -1,4 +1,4 @@
-# 🫘 RICE Miner Agent — GitHub Actions Edition [public]
+# 🫘 BEAN Miner Agent — GitHub Actions Edition [public]
 
 ---
 
@@ -44,13 +44,13 @@ Your bot needs Base ETH for gas and betting.
 Before waiting for the cron schedule, trigger it manually:
 
 1. Go to **Actions** tab
-2. Click **🫘 RICE Miner** in the left sidebar
+2. Click **🫘 BEAN Miner** in the left sidebar
 3. Click **Run workflow** → **Run workflow** (green button)
 4. Watch the logs in real time!
 
 You should see something like:
 ```
-🫘  RICE MINER AGENT - GitHub Actions Run
+🫘  BEAN MINER AGENT - GitHub Actions Run
 ==========================================
 ✅  Connected to Base chain (primary RPC)
 ✅  Wallet  : 0xYourAddress...
@@ -92,7 +92,7 @@ Change them, commit the file, and GitHub Actions picks up the new settings autom
 → https://basescan.org/address/YOUR_WALLET_ADDRESS
 
 **Manually trigger a claim:**
-→ Actions → 🌾 RICE Harvester → Run workflow
+→ Actions → 🌾 BEAN Harvester → Run workflow
 
 ---
 

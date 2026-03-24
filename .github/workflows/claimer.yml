@@ -9,11 +9,14 @@ name: 🌾 RICE Harvester
 on:
   schedule:
     - cron: '0 */2 * * *'    # Every 2 hours
-  workflow_dispatch:           # Also lets you trigger it manually from GitHub UI
+  workflow_dispatch:           # Trigger manually from GitHub UI
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Fix Node deprecation warning
 
 jobs:
   claim:
-    name: Claim ETH Rewards
+    name: Claim Rewards
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -27,14 +30,16 @@ jobs:
           node-version: '24'
 
       - name: Install dependencies
-        run: npm install --package-lock-only && npm ci
+        run: npm install
 
       - name: Claim ETH rewards
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: node claim_rewards.js --type=eth
+        continue-on-error: true
 
       - name: Claim BEAN rewards
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: node claim_rewards.js --type=bean
+        continue-on-error: true

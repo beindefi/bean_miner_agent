@@ -4,7 +4,7 @@
 # back into your wallet automatically
 # ============================================
 
-name: 🌾 RICE Harvester
+name: 🌾 BEAN Harvester
 
 on:
   schedule:

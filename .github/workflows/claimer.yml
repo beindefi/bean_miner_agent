@@ -4,7 +4,7 @@
 # back into your wallet automatically
 # ============================================
 
-name: 🌾 BEAN Harvester
+name: 🌾 RICE Harvester
 
 on:
   schedule:
@@ -24,11 +24,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '24'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --package-lock-only && npm ci
 
       - name: Claim ETH rewards
         env:
